@@ -10,11 +10,27 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    @IBOutlet weak var theScreenLabel: UILabel!
+    private var theScreenValue = 0 {
+        didSet {
+            theScreenLabel.text = String(theScreenValue)
+        }
+    }
+    
+    @IBAction func doDigitTouched(_ sender: UIButton) {
+        theScreenValue = theScreenValue * 10
+            + Int((sender.titleLabel?.text)!)!
+    }
+    
+    @IBAction func doClearTouched(_ sender: UIButton) {
+        theScreenValue = 0
+    }
+    @IBAction func doSquareTouched(_ sender: Any) {
+        theScreenValue *= theScreenValue
     }
 
-
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 }
 
